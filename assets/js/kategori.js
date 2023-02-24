@@ -1,3 +1,6 @@
+const API_DATABARANG = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/databarang/";
+const API_KATEGORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/kategori/";
+
 const bersih = () => {
   document.getElementById('id_kategori').readOnly = false;
   document.getElementById('id_kategori').value = "";
@@ -6,7 +9,7 @@ const bersih = () => {
 };
 
 const deleteKategori = (id) => {
-  axios.delete("https://stokbarang-backend-cqpvntuoja-uc.a.run.app/api/kategori/"+id+"")
+  axios.delete(API_KATEGORI+id)
   .then(response => {
     location.reload();
     // console.log(response);
@@ -15,7 +18,7 @@ const deleteKategori = (id) => {
 };
 
 const putKategori = (id) => {
-  axios.get("https://stokbarang-backend-cqpvntuoja-uc.a.run.app/api/kategori/"+id+"")
+  axios.get(API_KATEGORI+id)
       .then((response) => {
         document.getElementById('update_id_kategori').value = response.data.data[0].id_kategori;
         document.getElementById('update_id_kategori').readOnly = true;
@@ -32,7 +35,7 @@ const actionPutKategori = () => {
     const v_kategori = document.getElementById('kategori').value;
     const v_deskripsi = document.getElementById('deskripsi').value;
     document.getElementById('id_kategori').readOnly = false;
-    axios.put("https://stokbarang-backend-cqpvntuoja-uc.a.run.app/api/kategori/"+v_id_kategori+"", {
+    axios.put(API_KATEGORI+v_id_kategori, {
       kategori: v_kategori,
       deskripsi: v_deskripsi
     })
@@ -44,7 +47,7 @@ const actionPutKategori = () => {
 }
 
 const getKategori = () => {
-  axios.get("https://stokbarang-backend-cqpvntuoja-uc.a.run.app/api/kategori")
+  axios.get(API_KATEGORI)
       .then((response) => {
           // console.log('GET databarang', response.data.data);
 
@@ -86,7 +89,7 @@ const postKategori = () => {
   const kategori = document.getElementById('kategori').value;
   const deskripsi = document.getElementById('deskripsi').value;
 
-  axios.post("https://stokbarang-backend-cqpvntuoja-uc.a.run.app/api/kategori", {
+  axios.post(API_KATEGORI, {
     id_kategori: id_kategori,
     kategori: kategori,
     deskripsi: deskripsi
