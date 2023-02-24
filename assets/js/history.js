@@ -53,12 +53,62 @@ const getHistori = () => {
         .catch((error) => console.log('ada error', error));
 };
 
+const postDataHistori = () => {
+    const v_id_transaksi = document.getElementById('v_id_transaksi').value;
+    const id_barang = document.getElementById('select_barang2').value;
+    const v_type = document.getElementById('v_type').value;
+    const v_date = null;
+    const v_nama = document.getElementById('v_nama').value;
+    const v_kuantitas = document.getElementById('v_kuantitas').value;
+  
+    axios.post(API_HISTORI, {
+        v_id_transaksi: v_id_transaksi,
+        id_barang: id_barang,
+        v_type: v_type,
+        v_date: v_date,
+        v_nama: v_nama,
+        v_kuantitas: v_kuantitas
+    })
+    .then((response) => {
+      location.reload();
+      // console.log(response);
+    })
+    .catch((error) => console.log('ada error', error));
+  };
+
 const selectBarang = () => {
     axios.get(API_DATABARANG)
     .then((response) => {
         const data = response.data;
         // console.log(data);
         const select = document.getElementById('select_barang');
+        select.innerHTML = '';
+
+        // create default selected disabled
+        let optiondefault = document.createElement('option');
+        optiondefault.text = '-- Pilih Barang --';
+        optiondefault.value = '';
+        optiondefault.selected = true;
+        optiondefault.disabled = true;
+        select.appendChild(optiondefault);
+
+        // Foreach api response to select option
+        data.forEach((item) => {
+            const option = document.createElement('option');
+            option.value = item.id_barang;
+            option.text = item.nama_barang;
+            select.appendChild(option);
+        });
+    })
+    .catch((error) => console.log('ada error', error));
+};
+
+const selectBarang2 = () => {
+    axios.get(API_DATABARANG)
+    .then((response) => {
+        const data = response.data;
+        // console.log(data);
+        const select = document.getElementById('select_barang2');
         select.innerHTML = '';
 
         // create default selected disabled
@@ -124,5 +174,6 @@ const actionLihatHistori = () => {
         .catch((error) => console.log('ada error', error));
 };
 
+selectBarang2();
 selectBarang();
 getHistori();
