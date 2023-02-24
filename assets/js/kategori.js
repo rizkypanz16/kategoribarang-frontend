@@ -1,5 +1,6 @@
 const API_DATABARANG = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/databarang/";
 const API_KATEGORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/kategori/";
+const API_HISTORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/histori/";
 
 const bersih = () => {
   document.getElementById('id_kategori').readOnly = false;

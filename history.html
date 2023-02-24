@@ -59,7 +59,7 @@
           <li class="nav-item">
             <a class="nav-link  active" href="./history.html">
                 <i class="fa-solid fa-clock-rotate-left"></i>
-              Histori
+              Histori 
             </a>
           </li>
         </ul>
@@ -68,13 +68,75 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Histori</h1>
+        <h1 class="h2">All Histori</h1>
+      </div>
+      
+      <div class="table-responsive mt-4">
+        <table class="table table-striped table-sm" id="tablehistory">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Pengambil Barang</th>
+              <th scope="col">Nama Barang</th>
+              <!-- <th scope="col">Foto Barang</th> -->
+              <th scope="col">Type transaksi</th>
+              <th scope="col">Waktu</th>
+              <th scope="col">Kuantitas</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card col-md-6 mb-4">
+        <div class="card-header fw-bold">
+          Lihat Histori Barang Berdasarkan
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-auto">
+              <label class="col-form-label fw-bold">Barang</label>
+            </div>
+            <div class="col-12">
+              <select id="select_barang" class="form-control">
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-auto mb">
+              <button type="button" class="btn btn-dark text-white" id="kirim" onclick="actionLihatHistori()">Lihat</button>
+              <button type="button" class="btn btn-warning text-white" id="bersih" onclick="bersih()"><i class="fa-solid fa-broom-wide"></i>clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive mt-4">
+        <table class="table table-striped table-sm" id="tableselecthistory">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Pengambil Barang</th>
+              <th scope="col">Nama Barang</th>
+              <!-- <th scope="col">Foto Barang</th> -->
+              <th scope="col">Type transaksi</th>
+              <th scope="col">Waktu</th>
+              <th scope="col">Kuantitas</th>
+            </tr>
+          </thead>
+          <tbody id="tbdodyselect">
+          </tbody>
+        </table>
       </div>
 
     </main>
   </div>
 </div>
 
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./assets/js/history.js"></script>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
 
   </body>

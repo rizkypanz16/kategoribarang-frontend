@@ -1,6 +1,7 @@
 // ## ENV GCLOUD
 const API_DATABARANG = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/databarang/";
 const API_KATEGORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/kategori/";
+const API_HISTORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/histori/";
 
 // ## NV LOKAL
 // const API_DATABARANG = "http://localhost:3001/api/databarang/";
@@ -103,7 +104,7 @@ const selectKategori = () => {
 const getKategori = () => {
     axios.get(API_DATABARANG)
         .then((response) => {
-            console.log('GET databarang', response.data);
+            // console.log('GET databarang', response.data);
 
             var tableBody = document.querySelector('#tabledatabarang tbody');
             let angkaMulai = 0;
