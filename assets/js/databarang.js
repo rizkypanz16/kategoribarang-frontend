@@ -5,6 +5,8 @@ const bersih = () => {
   document.getElementById('jumlah_barang').value = "";
   document.getElementById('harga_barang').value = "";
   document.getElementById('deskripsi').value = "";
+  // reset select option to default
+  document.getElementById('id_kategori').selectedIndex = 0;
 };
 
 const deleteDatabarang = (id) => {
@@ -56,6 +58,33 @@ const actionPutDatabarang = () => {
   .catch((error) => console.log('ada error', error));
 }
 
+const selectKategori = () => {
+  axios.get("https://stokbarang-backend-cqpvntuoja-uc.a.run.app/api/kategori")
+      .then((response) => {
+          const data = response.data.data;
+          // console.log(data);
+          const select = document.getElementById('id_kategori');
+          select.innerHTML = '';
+
+          // create default selected disabled
+          let optiondefault = document.createElement('option');
+          optiondefault.text = '-- Pilih Kategori --';
+          optiondefault.value = '';
+          optiondefault.selected = true;
+          optiondefault.disabled = true;
+          select.appendChild(optiondefault);
+
+          // Foreach api response to select option
+          data.forEach((item) => {
+            const option = document.createElement('option');
+            option.value = item.id_kategori;
+            option.text = item.kategori;
+            select.appendChild(option);
+          });
+      })
+      .catch((error) => console.log('ada error', error));
+};
+
 const getKategori = () => {
     axios.get("https://stokbarang-backend-cqpvntuoja-uc.a.run.app/api/databarang")
         .then((response) => {
@@ -99,6 +128,7 @@ const getKategori = () => {
 
 const postDatabarang = () => {
   const id_barang = document.getElementById('id_barang').value;
+  const id_kategori = document.getElementById('id_kategori').value;
   const nama_barang = document.getElementById('nama_barang').value;
   const jumlah_barang = document.getElementById('jumlah_barang').value;
   const harga_barang = document.getElementById('harga_barang').value;
@@ -106,7 +136,7 @@ const postDatabarang = () => {
 
   axios.post("https://stokbarang-backend-cqpvntuoja-uc.a.run.app/api/databarang", {
     id_barang: id_barang,
-    id_kategori: "testing",
+    id_kategori: id_kategori,
     nama_barang: nama_barang,
     deskripsi: deskripsi,
     jumlah_barang: jumlah_barang,
@@ -122,4 +152,5 @@ const postDatabarang = () => {
   .catch((error) => console.log('ada error', error));
 };
 
+selectKategori();
 getKategori();
