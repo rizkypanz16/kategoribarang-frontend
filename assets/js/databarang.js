@@ -7,6 +7,8 @@ const bersih = () => {
   document.getElementById('deskripsi').value = "";
   // reset select option to default
   document.getElementById('id_kategori').selectedIndex = 0;
+  document.getElementById('id_kategori').readOnly = false;
+  document.getElementById('id_kategori').disabled = false;
 };
 
 const deleteDatabarang = (id) => {
@@ -23,6 +25,8 @@ const putDatabarang = (id) => {
       .then((response) => {
         document.getElementById('update_id_barang').value = response.data[0].update_id_barang;
         document.getElementById('update_id_barang').readOnly = true;
+        document.getElementById('id_kategori').readOnly = true;
+        document.getElementById('id_kategori').disabled = true;
         document.getElementById('id_barang').value = response.data[0].id_barang;
         document.getElementById('id_barang').readOnly = true;
         document.getElementById('nama_barang').value = response.data[0].nama_barang;
