@@ -1,11 +1,16 @@
 // ## ENV GCLOUD
-const API_DATABARANG = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/databarang/";
-const API_KATEGORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/kategori/";
-const API_HISTORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/histori/";
+// const API_DATABARANG = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/databarang/";
+// const API_KATEGORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/kategori/";
+// const API_HISTORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/histori/";
+
+// const { default: axios } = require("axios");
 
 // ## ENV LOKAL
-// const API_DATABARANG = "http://localhost:3001/api/databarang/";
-// const API_KATEGORI = "http://localhost:3001/api/kategori/";
+const API_DATABARANG = "http://localhost:3001/api/databarang/";
+const API_KATEGORI = "http://localhost:3001/api/kategori/";
+const API_HISTORI = "http://localhost:3001/api/histori/";
+
+var formData = new FormData();
 
 const bersih = () => {
   document.getElementById('id_barang').readOnly = false;
@@ -60,7 +65,7 @@ const actionPutDatabarang = () => {
     id_barang: id_barang,
     id_kategori: id_kategori,
     nama_barang: nama_barang,
-    foto_barang: "null.jpg",
+    // foto_barang: foto_barang,
     deskripsi: deskripsi,
     jumlah_barang: jumlah_barang,
     harga_barang: harga_barang,
@@ -152,18 +157,33 @@ const postDatabarang = () => {
   const nama_barang = document.getElementById('nama_barang').value;
   const jumlah_barang = document.getElementById('jumlah_barang').value;
   const harga_barang = document.getElementById('harga_barang').value;
+  // const foto_barang = document.getElementById('foto_barang').value;
   const deskripsi = document.getElementById('deskripsi').value;
 
-  axios.post(API_DATABARANG, {
-    id_barang: id_barang,
-    id_kategori: id_kategori,
-    nama_barang: nama_barang,
-    deskripsi: deskripsi,
-    jumlah_barang: jumlah_barang,
-    foto_barang: "null.jpg",
-    harga_barang: harga_barang,
-    created_at: null,
-    updated_at: null
+  // console.log(foto_barang);
+  // axios.post(API_DATABARANG, {
+  //   id_barang: id_barang,
+  //   id_kategori: id_kategori,
+  //   nama_barang: nama_barang,
+  //   deskripsi: deskripsi,
+  //   jumlah_barang: jumlah_barang,
+  //   foto_barang: foto_barang,
+  //   harga_barang: harga_barang,
+  //   created_at: null,
+  //   updated_at: null
+  // })
+  formData.append('id_barang', id_barang);
+  formData.append('id_kategori', id_kategori);
+  formData.append('nama_barang', nama_barang);
+  formData.append('jumlah_barang', jumlah_barang);
+  formData.append("harga_barang", harga_barang);
+  var imagefile = document.querySelector('#foto_barang');
+  formData.append('foto_barang', imagefile.files[0]);
+  formData.append("deskripsi", deskripsi);
+  axios.post(API_DATABARANG, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
   })
   .then((response) => {
     location.reload();

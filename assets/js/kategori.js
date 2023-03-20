@@ -1,7 +1,12 @@
 // ## ENV GCLOUD
-const API_DATABARANG = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/databarang/";
-const API_KATEGORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/kategori/";
-const API_HISTORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/histori/";
+// const API_DATABARANG = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/databarang/";
+// const API_KATEGORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/kategori/";
+// const API_HISTORI = "https://stokbarang-backend2-cqpvntuoja-uc.a.run.app/api/histori/";
+
+// ## ENV LOKAL
+const API_DATABARANG = "http://localhost:3001/api/databarang/";
+const API_KATEGORI = "http://localhost:3001/api/kategori/";
+const API_HISTORI = "http://localhost:3001/api/histori/";
 
 const bersih = () => {
   document.getElementById('id_kategori').readOnly = false;
