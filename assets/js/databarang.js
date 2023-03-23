@@ -6,7 +6,7 @@
 //  ## ENV LOKAL
 const API_DATABARANG = env.API_DATABARANG;
 const API_KATEGORI = env.API_KATEGORI;
-const API_HISTORI = env.API_KATEGORI;
+const API_HISTORI = env.API_HISTORI;
 
 var formData = new FormData();
 
