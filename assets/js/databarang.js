@@ -101,7 +101,8 @@ const selectKategori = () => {
             select.appendChild(option);
           });
       })
-      .catch((error) => console.log('ada error', error));
+      .catch((error) => console.log('ada error : ', error.code, error.config.url
+      ));
 };
 
 const getKategori = () => {
@@ -146,7 +147,8 @@ const getKategori = () => {
               tableBody.appendChild(newRow);
             });
         })
-        .catch((error) => console.log('ada error', error));
+        .catch((error) => console.log('ada error : ', error.code, error.config.url
+        ));
 };
 
 const postDatabarang = () => {

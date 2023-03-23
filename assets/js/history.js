@@ -52,7 +52,8 @@ const getHistori = () => {
               tableBody.appendChild(newRow);
             });
         })
-        .catch((error) => console.log('ada error', error));
+        .catch((error) => console.log('ada error : ', error.code, error.config.url
+        ));
 };
 
 const postDataHistori = () => {
@@ -102,7 +103,8 @@ const selectBarang = () => {
             select.appendChild(option);
         });
     })
-    .catch((error) => console.log('ada error', error));
+    .catch((error) => console.log('ada error : ', error.code, error.config.url
+    ));
 };
 
 const selectBarang2 = () => {
@@ -129,7 +131,8 @@ const selectBarang2 = () => {
             select.appendChild(option);
         });
     })
-    .catch((error) => console.log('ada error', error));
+    .catch((error) => console.log('ada error : ', error.code, error.config.url
+    ));
 };
 
 const actionLihatHistori = () => {
