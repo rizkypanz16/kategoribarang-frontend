@@ -36,17 +36,18 @@ const deleteDatabarang = (id) => {
 const putDatabarang = (id) => {
   axios.get(API_DATABARANG+id)
       .then((response) => {
-        document.getElementById('update_id_barang').value = response.data[0].update_id_barang;
+        document.getElementById('update_id_barang').value = response.data.data[0].id_barang;
         document.getElementById('update_id_barang').readOnly = true;
-        document.getElementById('update_id_kategori').value = response.data[0].id_kategori;
+        document.getElementById('update_id_kategori').value = response.data.data[0].id_kategori;
         document.getElementById('id_kategori').readOnly = true;
         document.getElementById('id_kategori').disabled = true;
-        document.getElementById('id_barang').value = response.data[0].id_barang;
+        document.getElementById('id_barang').value = response.data.data[0].id_barang;
         document.getElementById('id_barang').readOnly = true;
-        document.getElementById('nama_barang').value = response.data[0].nama_barang;
-        document.getElementById('jumlah_barang').value = response.data[0].jumlah_barang;
-        document.getElementById('harga_barang').value = response.data[0].harga_barang;
-        document.getElementById('deskripsi').value = response.data[0].deskripsi;
+        document.getElementById('nama_barang').value = response.data.data[0].nama_barang;
+        document.getElementById('jumlah_barang').value = response.data.data[0].jumlah_barang;
+        document.getElementById('harga_barang').value = response.data.data[0].harga_barang;
+        document.getElementById('foto_barang').disabled = true;
+        document.getElementById('deskripsi').value = response.data.data[0].deskripsi;
       })
       .catch((error) => console.log('ada error', error));
 };
