@@ -1,53 +1,30 @@
-/* globals Chart:false, feather:false */
+//  ## ENV LOKAL
+const API_DATABARANG = env.API_DATABARANG;
+const API_KATEGORI = env.API_KATEGORI;
+const API_HISTORI = env.API_HISTORI;
 
-(function () {
-  'use strict'
-
-  feather.replace({ 'aria-hidden': 'true' })
-
-  // Graphs
-  var ctx = document.getElementById('myChart')
-  // eslint-disable-next-line no-unused-vars
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
-      datasets: [{
-        data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
-        ],
-        lineTension: 0,
-        backgroundColor: 'transparent',
-        borderColor: '#007bff',
-        borderWidth: 4,
-        pointBackgroundColor: '#007bff'
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }]
-      },
-      legend: {
-        display: false
-      }
-    }
+function tampilHitung(){
+  axios.get(API_DATABARANG+"count")
+  .then((response) => {
+      document.getElementById('count_databarang').innerHTML = response.data.data[0].count;
   })
-})()
+  .catch((error) => console.log('ada error : ', error.code, error.config.url
+));
+
+axios.get(API_KATEGORI+"count")
+  .then((response) => {
+      document.getElementById('count_kategori').innerHTML = response.data.data[0].count;
+  })
+  .catch((error) => console.log('ada error : ', error.code, error.config.url
+));
+
+axios.get(API_HISTORI+"count")
+  .then((response) => {
+      document.getElementById('count_histori').innerHTML = response.data.data[0].count;
+  })
+  .catch((error) => console.log('ada error : ', error.code, error.config.url
+));
+}
+
+
+tampilHitung();
